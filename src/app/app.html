@@ -1,0 +1,61 @@
+<div class="page">
+  <header class="header">
+    <div class="header-inner">
+      <span class="header-title">Cloudinary</span>
+      <span class="header-badge">Angular Demo</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <h1 class="hero-title">Cloudinary Product Gallery</h1>
+      <p class="hero-description">
+        A full-featured product gallery widget — images, video, and 360° spin — embedded in an Angular app using the
+        <a href="https://cloudinary.com/documentation/product_gallery_reference" target="_blank" rel="noopener">
+          Cloudinary Gallery Widget
+        </a>.
+      </p>
+    </section>
+
+    <section class="gallery-section">
+      <app-product-gallery [cloudName]="cloudName" [mediaAssets]="mediaAssets" />
+    </section>
+
+    <section class="code-section">
+      <h2 class="code-section__title">How it works</h2>
+      <p class="code-section__description">
+        The gallery widget is initialised inside <code>ngAfterViewInit</code> and torn down in <code>ngOnDestroy</code>,
+        targeting a native DOM element via <code>ViewChild</code>.
+      </p>
+      <pre class="code-block"><code>// product-gallery.component.ts
+ngAfterViewInit(): void &#123;
+  this.widget = cloudinary.galleryWidget(&#123;
+    container: this.galleryContainer.nativeElement,
+    cloudName: 'demo',
+    mediaAssets: [
+      &#123; tag: 'electric_car_product_gallery_demo' &#125;,
+      &#123; tag: 'electric_car_product_gallery_demo', mediaType: 'video' &#125;,
+      &#123; tag: 'electric_car_360_product_gallery_demo', mediaType: 'spin' &#125;,
+    ],
+  &#125;);
+  this.widget.render();
+&#125;
+
+ngOnDestroy(): void &#123;
+  this.widget?.destroy();
+&#125;</code></pre>
+
+      <p class="code-section__description">Add the widget script to <code>index.html</code>:</p>
+      <pre class="code-block"><code>&lt;script src="https://product-gallery.cloudinary.com/all.js"&gt;&lt;/script&gt;</code></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Built with Angular &amp; the
+      <a href="https://cloudinary.com/documentation/product_gallery_reference" target="_blank" rel="noopener">
+        Cloudinary Product Gallery Widget
+      </a>
+    </p>
+  </footer>
+</div>
