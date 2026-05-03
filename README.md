@@ -22,7 +22,7 @@ No additional npm packages are required. The gallery widget is loaded directly f
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-org/cld-angular-product-gallery.git
+git clone https://github.com/cloudinary-devs/cld-angular-product-gallery.git
 cd cld-angular-product-gallery
 ```
 
